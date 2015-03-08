@@ -46,9 +46,15 @@ class Gear
   def ratio
     chainring / cog.to_f
   end
+
+  def gear_inches(rim, tire)
+    (rim + (2 * tire)) * self.ratio
+  end
 end
 
 puts Gear.new(52, 11).ratio
-puts Gear.new(30, 27).ratio
+my_bike = Gear.new(30, 27).ratio
 
+puts Gear.new(30, 27).gear_inches(28, 28)
+puts my_bike.gear_inches(28,28)
 # But what about if we have a new requirement that the size of the wheel is taken into account in our equation? You would need to calculate 'Gear Inches', which is the product of wheel diameter (rim diameter + 2 * tire diameter) and the gear ratio. How would you code this?
